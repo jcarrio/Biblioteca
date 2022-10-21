@@ -61,7 +61,7 @@ begin
   formatted.Free;
 end;
 
-function TJsonParse.GetValue(pKey: String; pParent: String = ''): String;
+function TJsonParser.GetValue(pKey: String; pParent: String = ''): String;
 var aux, cont: Integer;
 begin
   Result := '';
