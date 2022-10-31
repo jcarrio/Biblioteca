@@ -127,6 +127,14 @@ begin
       if (closingCB > 0)and(comma = 0)and(colon = 0) then begin
         formatted.Add(copy(pLine,1,pos('}',pLine)));
         pLine := copy(pLine,pos('}',pLine)+1,length(pLine));
+      end else
+      if (closingCB > 0)and(comma > closingCB)and(colon < closingCB) then begin
+        formatted.Add(copy(pLine,1,pos('}',pLine)-1));
+        pLine := copy(pLine,pos('}',pLine),length(pLine));
+      end else
+      if (closingCB > 0)and(comma > closingCB)and((colon = 0)or(colon > comma)) then begin
+        formatted.Add(copy(pLine,1,pos(',',pLine)));
+        pLine := copy(pLine,pos(',',pLine)+1,length(pLine));
       end;
     end;
   end;
